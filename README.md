@@ -68,6 +68,11 @@ Entre na pasta backend e instale as dependências do Node.js:
 cd ../backend
 npm install
 ```
+Ainda na pasta backend instale as dependências do Python: 
+
+```bash
+pip install -r requirements.txt
+```
 
 ###  3. Configurar o Banco de Dados
 
