@@ -62,13 +62,7 @@ Entre na pasta frontend e instale as dependências do React:
 cd frontend
 npm install
 ```
-Entre na pasta backend e instale as dependências do Node.js:
-
-```bash
-cd ../backend
-npm install
-```
-Ainda na pasta backend instale as dependências do Python: 
+Instale as dependências do Python: 
 
 ```bash
 pip install -r requirements.txt
