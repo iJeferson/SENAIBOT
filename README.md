@@ -59,12 +59,14 @@ npm install
 Entre na pasta frontend e instale as dependências do React:
 
 ```bash
-cd frontend
+cd frontend // Para acessar a pasta frontend
 npm install
 ```
 Instale as dependências do Python: 
 
 ```bash
+cd .. // Para voltar a pasta
+cd backend // Para acessar a pasta backend
 pip install -r requirements.txt
 ```
 
