@@ -22,7 +22,8 @@
     "react-router-dom": "^6.27.0",
     "react-spinners": "^0.14.1",
     "react-virtualized": "^9.22.5",
-    "sort-by": "^1.2.0"
+    "sort-by": "^1.2.0",
+    "tcc": "file:"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
