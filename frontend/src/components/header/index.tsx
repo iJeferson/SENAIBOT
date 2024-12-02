@@ -16,6 +16,9 @@ export function Header() {
             </span>
           </Link>
           <div className="flex items-center gap-4 text-2xl">
+            <Link to="/pesquisas">
+            pesquisa
+            </Link>
             <a
               href="https://github.com/iJeferson/tcc-rpa-update"
               target="_blank"

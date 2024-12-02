@@ -1,10 +1,12 @@
 {
     "dependencies": {
+        "apexcharts": "^4.1.0",
         "cors": "^2.8.5",
         "exceljs": "^4.4.0",
         "express": "^4.21.1",
         "mysql2": "^3.11.4",
         "nodemon": "^3.1.7",
+        "react-apexcharts": "^1.6.0",
         "sequelize": "^6.37.5",
         "vite": "^5.4.11"
     },

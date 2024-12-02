@@ -29,7 +29,7 @@ driver.implicitly_wait(10)
 db = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="123456",
+    password="root@123",
     database="inpi_db"
 )
 cursor = db.cursor()
