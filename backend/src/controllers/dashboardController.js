@@ -3,19 +3,23 @@ const { busca_inpi } = require('../models'); // Ajuste o caminho se necessário
 
 const dashboard = {
   /**
-   * Retorna um resumo do dashboard filtrado por termo de pesquisa.
+   * Retorna um resumo do dashboard filtrado por termo de pesquisa (input).
    */
   async obterDadosDoDashboard(req, res) {
     try {
-      const { termo } = req.query; // Termo de pesquisa fornecido via query string
+      const { input } = req.body; // Agora capturando o valor de "input" do corpo da requisição
 
-      // Condição de busca dinâmica com base no termo
-      const whereCondition = termo
+      if (!input) {
+        return res.status(400).json({ message: 'O campo "input" é necessário.' });
+      }
+
+      // Condição de busca dinâmica com base no input
+      const whereCondition = input
         ? {
             [Op.or]: [
-              { titulo: { [Op.like]: `%${termo}%` } },
-              { pedido: { [Op.like]: `%${termo}%` } },
-              { ipc: { [Op.like]: `%${termo}%` } }
+              { titulo: { [Op.like]: `%${input}%` } },
+              { pedido: { [Op.like]: `%${input}%` } },
+              { ipc: { [Op.like]: `%${input}%` } }
             ]
           }
         : {};
