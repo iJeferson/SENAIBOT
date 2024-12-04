@@ -75,12 +75,12 @@ Na raiz do seu projeto, onde estão as pastas frontend e backend, execute o coma
 npm install
 ```
 
-Entre na pasta frontend e instale as dependências do React:
+Navegue até a pasta do frontend e instale as dependências do React:
 
 ```bash
 npm install
 ```
-Entre na pasta backende instale as dependências do Python: 
+Navegue até a pasta do backend e instale as dependências do Python: 
 
 ```bash
 pip install -r requirements.txt
