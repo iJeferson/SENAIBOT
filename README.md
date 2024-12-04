@@ -69,11 +69,6 @@ cd .. // Para voltar a pasta
 cd backend // Para acessar a pasta backend
 pip install -r requirements.txt
 ```
-Ainda na pasta backend instale as dependências do Python: 
-
-```bash
-pip install -r requirements.txt
-```
 
 ###  3. Configurar o Banco de Dados
 

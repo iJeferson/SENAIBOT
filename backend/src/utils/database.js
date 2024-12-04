@@ -4,7 +4,7 @@ const { Sequelize } = require('sequelize');
 const createDatabaseIfNotExists = async () => {
     try {
         // Conecta ao MySQL sem especificar um banco de dados
-        const sequelizeWithoutDB = new Sequelize('mysql', 'root', 'root@123', {
+        const sequelizeWithoutDB = new Sequelize('mysql', 'root', 'root', {
             host: 'localhost',
             dialect: 'mysql',
         });
@@ -13,7 +13,7 @@ const createDatabaseIfNotExists = async () => {
         await sequelizeWithoutDB.query('CREATE DATABASE IF NOT EXISTS inpi_db;');
 
         // Agora cria uma nova instância do Sequelize com o banco de dados correto
-        const sequelizeWithDB = new Sequelize('inpi_db', 'root', 'root@123', {
+        const sequelizeWithDB = new Sequelize('inpi_db', 'root', 'root', {
             host: 'localhost',
             dialect: 'mysql',
         });

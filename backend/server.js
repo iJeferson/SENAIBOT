@@ -4,6 +4,7 @@ const path = require('path');
 const { createDatabaseIfNotExists } = require('./src/utils/database.js');
 const pesquisaRoutes = require('./src/routes/pesquisaRoutes');
 const downloadRoutes = require('./src/routes/downloadRoutes');
+const dashboardRoutes = require('./src/routes/dashboardRoutes');
 
 const app = express();
 app.use(cors());
@@ -16,6 +17,7 @@ createDatabaseIfNotExists();
 // Rota POST para executar o script de pesquisa
 app.use('/pesquisar', pesquisaRoutes);
 app.use('/download', downloadRoutes);
+app.use('/dashboard', dashboardRoutes);
 
 // Inicia o servidor
 app.listen(3000, () => {
