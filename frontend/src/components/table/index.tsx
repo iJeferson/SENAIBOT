@@ -69,8 +69,8 @@ const BasicTable: React.FC<BasicTableProps> = ({ rows }) => {
                   </a>
                 </td>
                 <td className="border px-4 py-2">{row.deposito}</td>
-                <td className="border px-4 py-2  ">{row.titulo}</td>
-                <td className="border px-4 py-2 overflow-hidden whitespace-nowrap text-ellipsis">{row.ipc}</td>
+                <td className="border px-4 py-2 ">{row.titulo}</td>
+                <td className="border px-4 py-2 overflow-hidden text-center whitespace-nowrap text-ellipsis">{row.ipc}</td>
                 <td className="border px-4 py-2 ">{row.descricaoWipo}</td>
               </tr>
             ))
@@ -91,7 +91,7 @@ const BasicTable: React.FC<BasicTableProps> = ({ rows }) => {
         onPageChange={handleChangePage}
         rowsPerPage={rowsPerPage}
         onRowsPerPageChange={handleChangeRowsPerPage}
-        rowsPerPageOptions={[5, 10, 25]}
+        rowsPerPageOptions={[20, 40, 60, 80 , 100]}
         labelRowsPerPage="Linhas por página:"
         labelDisplayedRows={({ from, to, count }) =>
           `${from}-${to} de ${count}`
