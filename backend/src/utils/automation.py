@@ -1,12 +1,17 @@
+from dotenv import load_dotenv
+import os
 import sys
 import json
+import mysql.connector
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
-import mysql.connector
+
+# Carregar as variáveis do arquivo .env
+load_dotenv()
 
 # Recebe o valor de pesquisa como argumento
 if len(sys.argv) < 2:
@@ -27,10 +32,10 @@ driver.implicitly_wait(10)
 
 # Conexão com o banco de dados MySQL
 db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="root",
-    database="inpi_db"
+    host=os.getenv('DB_HOST'),
+    user=os.getenv('DB_USER'),
+    password=os.getenv('DB_PASSWORD'),
+    database=os.getenv('DB_DATABASE')
 )
 cursor = db.cursor()
 

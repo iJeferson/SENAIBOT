@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+require('dotenv').config();
 const { createDatabaseIfNotExists } = require('./src/utils/database.js');
 const pesquisaRoutes = require('./src/routes/pesquisaRoutes');
 const downloadRoutes = require('./src/routes/downloadRoutes');
@@ -20,6 +21,6 @@ app.use('/download', downloadRoutes);
 app.use('/dashboard', dashboardRoutes);
 
 // Inicia o servidor
-app.listen(3000, () => {
+app.listen(process.env.EXPRESS_PORT, () => {
   console.log('Servidor Backend em execução');
 });
