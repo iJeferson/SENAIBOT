@@ -5,8 +5,6 @@ Este projeto tem como objetivo automatizar o processo de consulta de patentes no
 ## 📸 Imagem do projeto
 ![screencapture-localhost-5174-2024-11-15-21_55_59](https://github.com/user-attachments/assets/a906147f-a978-4801-88ac-8d7c6dcbb3b1)
 
-
-
 ## 💻	 Funcionalidades
 - **Raspagem de Dados de Patentes**: Realiza a raspagem de dados de patentes diretamente do site do **INPI** (Instituto Nacional de Propriedade Industrial).
 - **Armazenamento em Banco de Dados**: Armazena as informações extraídas das patentes em um banco de dados (MySQL).
@@ -22,7 +20,6 @@ Este projeto tem como objetivo automatizar o processo de consulta de patentes no
   - **Banco de Dados**:
     - **MySQL**: Para armazenar as informações extraídas das patentes.
   - **Node.js**: Usado para expor a API que comunica o backend com o frontend, permitindo que os dados sejam acessados pela interface web.
-
     
 - **Frontend**:
   - **React.js**: Interface web interativa.
@@ -31,10 +28,32 @@ Este projeto tem como objetivo automatizar o processo de consulta de patentes no
   - **Material-UI (MUI)**: Componentes de UI prontos para facilitar o desenvolvimento.
 
 ## 📋 Pré-Requisitos
-
 - Node.js
 - Python
 - Banco de dados (MySQL)
+
+## 📁 Estrutura de Pastas
+
+A estrutura de pastas do projeto foi organizada de forma a manter o código modular e fácil de gerenciar. Abaixo está a descrição de cada pasta e sua função:
+
+### 🗂️ `frontend/` 
+Esta pasta contém todo o código do frontend da aplicação, incluindo componentes, páginas e arquivos relacionados ao lado do cliente.
+
+- **`src/`**: Contém os arquivos-fonte do frontend.
+  - **`components/`**: Componentes reutilizáveis em toda a aplicação.
+  - **`pages/`**: Páginas da aplicação. Cada arquivo dentro dessa pasta corresponde a uma página na aplicação.
+  - **`App.tsx`**: Componente principal da aplicação.
+  - **`index.css`**: Arquivo principal de estilo, responsável por importar as configurações do Tailwind CSS para a aplicação.
+
+### 🗂️ `backend/` 
+Esta pasta contém toda a lógica de back-end, incluindo servidores, rotas e acesso ao banco de dados.
+- **`server.js`**: Arquivo principal do servidor. Localizado fora da pasta `src`. Arquivo principal que inicializa o servidor Express.
+  - **`src/`**: Contém os arquivos-fonte do backend.
+    - **`controllers/`**: Funções que lidam com as requisições e lógicas de resposta.
+    - **`models/`**: Modelos de dados, geralmente representando tabelas do banco de dados.
+    - **`routes/`**: Arquivos que definem as rotas da API.
+    - **`utils/`**: Funções utilitárias para o backend.
+    - **`config`**: Pasta com o arquivo para inicializar a conexão com o banco de dados.
 
 ## 🚀  Rodando localmente
 
@@ -56,17 +75,14 @@ Na raiz do seu projeto, onde estão as pastas frontend e backend, execute o coma
 npm install
 ```
 
-Entre na pasta frontend e instale as dependências do React:
+Navegue até a pasta do frontend e instale as dependências do React:
 
 ```bash
-cd frontend // Para acessar a pasta frontend
 npm install
 ```
-Instale as dependências do Python: 
+Navegue até a pasta src/utils do backend e instale as dependências do Python: 
 
 ```bash
-cd .. // Para voltar a pasta
-cd backend // Para acessar a pasta backend
 pip install -r requirements.txt
 ```
 
@@ -126,5 +142,3 @@ Após iniciar o frontend e backend, você pode testar as funcionalidades do sist
 ## 📝 Licença
 
 Este projeto está licenciado sob a [MIT License](LICENSE).
-
-
