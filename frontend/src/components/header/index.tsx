@@ -11,11 +11,11 @@ export function Header() {
             <span className="flex items-center justify-center">
               <FaDatabase size={30} color="yellow" className="mr-2" />
               <h1 className="uppercase text-3xl text-white hover:text-slate-300 transition-all duration-300">
-              Patent<span className="text-blue-400">iA</span>
+              SEN<span className="text-blue-400">AI</span>BOT
               </h1>
             </span>
           </Link>
-          <div className="flex items-center gap-4 text-2xl">
+          <div className="flex items-center gap-4 text-base">
             <a
               href="https://github.com/iJeferson/tcc-rpa-update"
               target="_blank"
