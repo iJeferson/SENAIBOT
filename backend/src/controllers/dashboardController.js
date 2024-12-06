@@ -7,7 +7,7 @@ const dashboard = {
    */
   async obterDadosDoDashboard(req, res) {
     try {
-      const { input } = req.body; // Agora capturando o valor de "input" do corpo da requisição
+      const input = req.sharedInput; // Agora capturando o valor de "input" do corpo da requisição
 
       if (!input) {
         return res.status(400).json({ message: 'O campo "input" é necessário.' });

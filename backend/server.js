@@ -15,10 +15,29 @@ app.use(express.urlencoded({ extended: true }));
 // Função para criar o banco de dados se não existir
 createDatabaseIfNotExists();
 
+// Middleware para capturar o input
+let sharedInput = null; // Variável para armazenar o input
+
+function armazenarInput(req, res, next) {
+  const { input } = req.body;
+  if (input) {
+    sharedInput = input; // Salva o input para uso posterior
+  }
+  next(); // Continua para a próxima etapa (outro middleware ou rota)
+}
+
+// Aplica o middleware globalmente antes das rotas
+app.use(armazenarInput);
+
 // Rota POST para executar o script de pesquisa
 app.use('/pesquisar', pesquisaRoutes);
 app.use('/download', downloadRoutes);
-app.use('/dashboard', dashboardRoutes);
+
+// Passa o `sharedInput` para o controlador de dashboard
+app.use('/dashboard', (req, res, next) => {
+  req.sharedInput = sharedInput; // Disponibiliza o `input` no objeto `req` para o controlador
+  next();
+}, dashboardRoutes);
 
 // Inicia o servidor
 app.listen(process.env.EXPRESS_PORT, () => {

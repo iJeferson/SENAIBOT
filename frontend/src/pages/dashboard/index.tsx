@@ -8,7 +8,7 @@ export function Dashboard () {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/dashboard"); // URL do backend
+        const response = await axios.get("http://localhost:3000/dashboard"); // URL do backend
         setData(response.data.resumo);
       } catch (error) {
         console.error("Erro ao buscar dados do dashboard:", error);
