@@ -55,6 +55,29 @@ Esta pasta contém toda a lógica de back-end, incluindo servidores, rotas e ace
     - **`utils/`**: Funções utilitárias para o backend.
     - **`config`**: Pasta com o arquivo para inicializar a conexão com o banco de dados.
 
+## 📁 Estrutura de Pastas
+
+A estrutura de pastas do projeto foi organizada de forma a manter o código modular e fácil de gerenciar. Abaixo está a descrição de cada pasta e sua função:
+
+### 🗂️ `frontend/` 
+Esta pasta contém todo o código do frontend da aplicação, incluindo componentes, páginas e arquivos relacionados ao lado do cliente.
+
+- **`src/`**: Contém os arquivos-fonte do frontend.
+  - **`components/`**: Componentes reutilizáveis em toda a aplicação.
+  - **`pages/`**: Páginas da aplicação. Cada arquivo dentro dessa pasta corresponde a uma página na aplicação.
+  - **`App.tsx`**: Componente principal da aplicação.
+  - **`index.css`**: Arquivo principal de estilo, responsável por importar as configurações do Tailwind CSS para a aplicação.
+
+### 🗂️ `backend/` 
+Esta pasta contém toda a lógica de back-end, incluindo servidores, rotas e acesso ao banco de dados.
+- **`server.js`**: Arquivo principal do servidor. Localizado fora da pasta `src`. Arquivo principal que inicializa o servidor Express.
+  - **`src/`**: Contém os arquivos-fonte do backend.
+    - **`controllers/`**: Funções que lidam com as requisições e lógicas de resposta.
+    - **`models/`**: Modelos de dados, geralmente representando tabelas do banco de dados.
+    - **`routes/`**: Arquivos que definem as rotas da API.
+    - **`utils/`**: Funções utilitárias para o backend.
+    - **`config`**: Pasta com o arquivo para inicializar a conexão com o banco de dados.
+
 ## 🚀  Rodando localmente
 
 ### 1. Clonar o Repositório
@@ -80,7 +103,7 @@ Navegue até a pasta do frontend e instale as dependências do React:
 ```bash
 npm install
 ```
-Navegue até a pasta do backend e instale as dependências do Python: 
+Navegue até a pasta src/utils do backend e instale as dependências do Python: 
 
 ```bash
 pip install -r requirements.txt
@@ -142,5 +165,3 @@ Após iniciar o frontend e backend, você pode testar as funcionalidades do sist
 ## 📝 Licença
 
 Este projeto está licenciado sob a [MIT License](LICENSE).
-
-

@@ -1,31 +1,41 @@
 const { Sequelize } = require('sequelize');
+require('dotenv').config({ path: './backend/.env' });
 
-// Função para criar o banco de dados se não existir
+
 const createDatabaseIfNotExists = async () => {
     try {
-        // Conecta ao MySQL sem especificar um banco de dados
-        const sequelizeWithoutDB = new Sequelize('mysql', 'root', 'root@123', {
-            host: 'localhost',
-            dialect: 'mysql',
-        });
+        // Conexão inicial sem banco de dados
+        const sequelizeWithoutDB = new Sequelize(
+            null, // Sem especificar o banco
+            process.env.DB_USER,
+            process.env.DB_PASSWORD,
+            {
+                host: process.env.DB_HOST,
+                dialect: 'mysql',
+            }
+        );
 
-        // Cria o banco de dados se não existir
-        await sequelizeWithoutDB.query('CREATE DATABASE IF NOT EXISTS inpi_db;');
+        // Criar o banco de dados
+        await sequelizeWithoutDB.query(`CREATE DATABASE IF NOT EXISTS \`${process.env.DB_DATABASE}\`;`);
+        console.log(`Banco de dados ${process.env.DB_DATABASE} criado (se não existia).`);
 
-        // Agora cria uma nova instância do Sequelize com o banco de dados correto
-        const sequelizeWithDB = new Sequelize('inpi_db', 'root', 'root@123', {
-            host: 'localhost',
-            dialect: 'mysql',
-        });
+        // Conexão com o banco de dados recém-criado
+        const sequelizeWithDB = new Sequelize(
+            process.env.DB_DATABASE,
+            process.env.DB_USER,
+            process.env.DB_PASSWORD,
+            {
+                host: process.env.DB_HOST,
+                dialect: 'mysql',
+            }
+        );
 
-        // Autentica no novo banco de dados
+        // Testa a conexão
         await sequelizeWithDB.authenticate();
-
-        console.log("Banco de dados criado e autenticado com sucesso.");
+        console.log("Banco de dados autenticado com sucesso.");
     } catch (error) {
         console.error('Não foi possível conectar ao banco de dados:', error);
     }
 };
 
-// Exporta a função
 module.exports = { createDatabaseIfNotExists };
