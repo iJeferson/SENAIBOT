@@ -64,13 +64,25 @@ const dashboard = {
         order: [[Sequelize.literal('ano'), 'DESC']] // Ordena do ano mais recente para o mais antigo
       });
 
+      // Identificar o menor e maior ano encontrados
+      let periodo = null;
+
+      if (patentesPorAno.length > 0) {
+        const anos = patentesPorAno.map(item => item.dataValues.ano).sort((a, b) => a - b);
+        const menorAno = anos[0];
+        const maiorAno = anos[anos.length - 1];
+        periodo = ` De: ${menorAno} Até ${maiorAno}`;
+      }
+
       // Retornar o JSON consolidado
       return res.json({
         resumo: {
+          periodo,
+          input,
           totalPatentes,
           topIPCs,
           patentesRecentes,
-          patentesPorAno
+          patentesPorAno,
         }
       });
     } catch (error) {
