@@ -1,22 +1,31 @@
-import { FaDatabase } from "react-icons/fa";
-import { Container } from "../../components/container";
-import { Link } from "react-router-dom";
-import { Input } from "../../components/input";
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { auth } from "../../services/firebaseConnection";
+
+import { Container } from "../../components/container";
+import { Input } from "../../components/input";
+
+import toast from "react-hot-toast";
+import { FaDatabase } from "react-icons/fa";
 
 const schema = z.object({
   email: z
     .string()
     .email("Digite um email válido")
-    .min(1, "Email é obrigatório"),
-  password: z.string().min(6, "O campo senha é obrigatório"),
+    .min(1, "Email é obrigatorio"),
+  password: z.string().min(6, "O campo senha é obrigatorio"),
 });
 
 type FormData = z.infer<typeof schema>;
 
 export function Login() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -26,18 +35,35 @@ export function Login() {
     mode: "onChange",
   });
 
-  const onSubmit = (data: FormData) => {
-    console.log("Dados do formulário:", data);
-    // Aqui você pode implementar o login, por exemplo, com Firebase ou API própria
-  };
+  useEffect(() => {
+    async function handleLogout() {
+      await signOut(auth);
+    }
+    handleLogout();
+  }, []);
+
+  function onSubmit(data: FormData) {
+    signInWithEmailAndPassword(auth, data.email, data.password)
+      .then((user) => {
+        console.log("LOGADO COM SUCESSO");
+        console.log(user);
+        toast.success("Logado com sucesso!");
+        navigate("/", { replace: true });
+      })
+      .catch((err) => {
+        console.log("ERRO AO LOGAR");
+        console.log(err);
+        toast.error("Erro ao fazer o login")
+      });
+  }
 
   return (
-    <main className=" bg-gray-900 ">
+    <main className="bg-gray-900 ">
 
     <Container>
       <div className="w-full min-h-screen flex flex-col items-center justify-center gap-6">
         {/* Logo */}
-        <Link to="/">
+        <Link to="/login">
             {" "}
             <span className="flex items-center justify-center mb-4">
               <FaDatabase size={40} color="yellow" className="mr-2" />
