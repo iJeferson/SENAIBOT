@@ -23,7 +23,7 @@ const BasicTable: React.FC<BasicTableProps> = ({ rows }) => {
   const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);
   };
-  
+
   const handleChangeRowsPerPage = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -37,8 +37,8 @@ const BasicTable: React.FC<BasicTableProps> = ({ rows }) => {
   );
 
   return (
-    <>
-      <table  className="min-w-full bg-slate-50 table-auto border-collapse ">
+    <div className="overflow-x-auto">
+      <table className="min-w-full bg-slate-50 table-auto border-collapse">
         <thead>
           <tr>
             <th className="border px-4 py-2 bg-gray-800 text-white">Pedido</th>
@@ -54,29 +54,32 @@ const BasicTable: React.FC<BasicTableProps> = ({ rows }) => {
         </thead>
         <tbody>
           {paginatedRows.length > 0 ? (
-            paginatedRows.map((row) => (
+            paginatedRows.map((row, index) => (
               <tr
-                key={row.codigo}
-                className=" text-sm hover:bg-blue-100  transition-all duration-300"
+                key={`${row.codigo}-${index}`}
+                className="text-sm hover:bg-blue-100 transition-all duration-300"
               >
                 <td className="border px-4 p-2 max-w-sm overflow-hidden whitespace-nowrap text-ellipsis">
                   <a
                     href={row.link}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="underline underline-offset-2 hover:text-gray-700 transition-all duration-300"
                   >
                     {row.pedido}
                   </a>
                 </td>
                 <td className="border px-4 py-2">{row.deposito}</td>
-                <td className="border px-4 py-2 ">{row.titulo}</td>
-                <td className="border px-4 py-2 overflow-hidden text-center whitespace-nowrap text-ellipsis">{row.ipc}</td>
-                <td className="border px-4 py-2 ">{row.descricaoWipo}</td>
+                <td className="border px-4 py-2">{row.titulo}</td>
+                <td className="border px-4 py-2 text-center whitespace-nowrap text-ellipsis">
+                  {row.ipc}
+                </td>
+                <td className="border px-4 py-2">{row.descricaoWipo}</td>
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan={7} className="border px-4 py-2 text-center">
+              <td colSpan={5} className="border px-4 py-2 text-center">
                 Nenhum dado encontrado
               </td>
             </tr>
@@ -91,13 +94,13 @@ const BasicTable: React.FC<BasicTableProps> = ({ rows }) => {
         onPageChange={handleChangePage}
         rowsPerPage={rowsPerPage}
         onRowsPerPageChange={handleChangeRowsPerPage}
-        rowsPerPageOptions={[20, 40, 60, 80 , 100]}
+        rowsPerPageOptions={[5, 20, 40, 60, 80, 100]}
         labelRowsPerPage="Linhas por página:"
         labelDisplayedRows={({ from, to, count }) =>
-          `${from}-${to} de ${count}`
+          `${from}-${to} de ${count !== -1 ? count : `mais de ${to}`}`
         }
       />
-    </>
+    </div>
   );
 };
 

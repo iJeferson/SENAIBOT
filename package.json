@@ -1,5 +1,6 @@
 {
     "dependencies": {
+        "@hookform/resolvers": "^3.9.1",
         "apexcharts": "^4.1.0",
         "cors": "^2.8.5",
         "dotenv": "^16.4.7",
@@ -8,8 +9,10 @@
         "mysql2": "^3.11.4",
         "nodemon": "^3.1.7",
         "react-apexcharts": "^1.7.0",
+        "react-hook-form": "^7.54.0",
         "sequelize": "^6.37.5",
-        "vite": "^5.4.11"
+        "vite": "^5.4.11",
+        "zod": "^3.23.8"
     },
     "devDependencies": {
         "concurrently": "^9.1.0"
