@@ -23,9 +23,6 @@ export function Header() {
             </span>
           </Link>
           <button className="ml-auto" onClick={handleLogout}>
-            <Link to="/pesquisas">
-            pesquisa
-            </Link>
             <IoIosLogOut title="Sair" size={35} className="hover:text-red-500 duration-300 transition-all" />
           </button>
         </nav>

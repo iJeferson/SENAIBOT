@@ -109,6 +109,7 @@ export function Login() {
           >
             Acessar
           </button>
+          <p className="text-gray-700 text-sm text-center mt-2">Versão 1.0.0</p>
         </form>
 
         {/* Link para cadastro */}

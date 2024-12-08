@@ -74,68 +74,69 @@ export function Home() {
   }
 
   return (
-    <Container>
-      <div className="p-6">
-        <h1 className="text-2xl font-bold text-center uppercase">
-          Pesquise por uma patente
-        </h1>
-        <form onSubmit={handleSubmit}>
-          <div className="flex justify-center items-center mt-4 gap-4">
-            <input
-              type="text"
-              placeholder="Inserir o nome da patente"
-              className="border-2 border-gray-300 rounded-md p-2 w-1/2 h-12"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <button className="bg-blue-600 border-none h-12 text-white rounded-lg px-6 hover:bg-blue-500 transition-all duration-300">
-              Buscar
-            </button>
-          </div>
-        </form>
-      </div>
+    <main className="h-screen">
+      <Container>
+        <div className="p-6">
+          <h1 className="text-2xl font-bold text-center uppercase">
+            Pesquise por uma patente
+          </h1>
+          <form onSubmit={handleSubmit}>
+            <div className="flex justify-center items-center mt-4 gap-4">
+              <input
+                type="text"
+                placeholder="Inserir o nome da patente"
+                className="border-2 border-gray-300 rounded-md p-2 w-1/2 h-12"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              <button className="bg-blue-600 border-none h-12 text-white rounded-lg px-6 hover:bg-blue-500 transition-all duration-300">
+                Buscar
+              </button>
+            </div>
+          </form>
+        </div>
 
-      <div className="my-8">
-        {hasSearched && (
-          <>
-            {loading ? (
-              <p className="text-center text-blue-600">
-                <ClipLoader size={50} />
-              </p>
-            ) : error ? (
-              <p className="text-center text-red-600">{error}</p>
-            ) : data.length === 0 && !loading ? (
-              <p className="text-center text-gray-600">
-                Nenhuma patente encontrada.
-              </p>
-            ) : (
-              <>
-                <div className="overflow-x-auto p-4  rounded-lg">
-                  <BasicTable rows={data} />
-                  <div className="flex items-center mt-4 gap-4">
-                    <button
-                      title="Gerar planilha no Excel"
-                      className="bg-green-600 flex items-center gap-2 hover:bg-green-700 text-white font-bold py-2 px-6 rounded mt-4"
-                      onClick={() => handleExcel(data[0].pesquisa)}
-                    >
-                      <PiMicrosoftExcelLogoFill size={20} />
-                      Gerar Excel
-                    </button>
-                    <Link
-                      className="bg-blue-600 flex items-center gap-2 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded mt-4"
-                      to="/dashboard"
-                    >
-                      <MdDashboard size={20} />
-                      Dashboard
-                    </Link>
-               
+        <div className="my-8">
+          {hasSearched && (
+            <>
+              {loading ? (
+                <p className="text-center text-blue-600">
+                  <ClipLoader size={50} />
+                </p>
+              ) : error ? (
+                <p className="text-center text-red-600">{error}</p>
+              ) : data.length === 0 && !loading ? (
+                <p className="text-center text-gray-600">
+                  Nenhuma patente encontrada.
+                </p>
+              ) : (
+                <>
+                  <div className="overflow-x-auto p-4  rounded-lg">
+                    <BasicTable rows={data} />
+                    <div className="flex items-center mt-4 gap-4">
+                      <button
+                        title="Gerar planilha no Excel"
+                        className="bg-green-600 flex items-center gap-2 hover:bg-green-700 text-white font-bold py-2 px-6 rounded mt-4"
+                        onClick={() => handleExcel(data[0].pesquisa)}
+                      >
+                        <PiMicrosoftExcelLogoFill size={20} />
+                        Gerar Excel
+                      </button>
+                      <Link
+                        className="bg-blue-600 flex items-center gap-2 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded mt-4"
+                        to="/dashboard"
+                      >
+                        <MdDashboard size={20} />
+                        Dashboard
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              </>
-            )}
-          </>
-        )}
-      </div>
-    </Container>
+                </>
+              )}
+            </>
+          )}
+        </div>
+      </Container>
+    </main>
   );
 }
