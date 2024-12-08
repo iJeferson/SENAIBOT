@@ -5,6 +5,12 @@ Este projeto tem como objetivo automatizar o processo de consulta de patentes no
 ## 📸 Imagem do projeto
 ![screencapture-localhost-5173-2024-12-07-01_16_38](https://github.com/user-attachments/assets/9afb1748-adc1-4166-850b-97ab08cacaae)
 
+## 📽️ Vídeo do Projeto
+
+Confira o vídeo do projeto Senabot, desenvolvido como parte do meu TCC no curso de Desenvolvimento de Sistemas no SENAI CIMATEC:
+
+[![Assista ao vídeo no YouTube](https://img.youtube.com/vi/GSzvVvewhI4/0.jpg)](https://youtu.be/GSzvVvewhI4)
+
 ## 💻	 Funcionalidades
 - **Raspagem de Dados de Patentes**: Realiza a raspagem de dados de patentes diretamente do site do **INPI** (Instituto Nacional de Propriedade Industrial).
 - **Armazenamento em Banco de Dados**: Armazena as informações extraídas das patentes em um banco de dados (MySQL).
